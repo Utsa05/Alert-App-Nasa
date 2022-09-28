@@ -1,6 +1,8 @@
 import 'package:alert_app/views/constants/string.dart';
-import 'package:alert_app/views/pages/home/home_page.dart';
+
 import 'package:flutter/material.dart';
+
+import 'views/pages/map/map.dart';
 
 class AlertApp extends StatelessWidget {
   const AlertApp({super.key});
@@ -8,9 +10,8 @@ class AlertApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: AppString.appName,
-      home: HomePages(),
-    );
+        debugShowCheckedModeBanner: false,
+        title: AppString.appName,
+        home: MapPageCheck());
   }
 }
