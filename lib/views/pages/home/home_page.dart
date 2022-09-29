@@ -80,8 +80,6 @@ class HomeBody extends StatelessWidget {
                   const SizedBox(width: 5,),
               ],),
 
-
-
               const MyLocation(),
               const SizedBox(height: 25,),
               Container(  

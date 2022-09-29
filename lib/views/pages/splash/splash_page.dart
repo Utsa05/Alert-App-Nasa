@@ -48,7 +48,15 @@ class _SplashbodyState extends State<Splashbody> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children:    [
           const SizedBox(height: 35,),
-          Lottie.asset(AppAsset.area),
+          Stack(
+            children: [
+              Lottie.asset(AppAsset.area),
+              Positioned(
+                  top: 125,
+                  left: 138,
+                  child: Image.asset("assets/images/app_logo.png",height: 165,))
+            ],
+          )
         ],
       ),
     );

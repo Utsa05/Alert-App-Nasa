@@ -45,7 +45,7 @@ class TextFieldWidget extends StatelessWidget {
               decoration: InputDecoration(
                   counterText: '',
                   contentPadding: const EdgeInsets.only(
-                      left: 4.0, right: 8.0, top: 14.0, bottom: 12.0),
+                      left: 4.0, right: 3.0, top: 3.0, bottom: 3.0),
                   isDense: true,
                   // enabledBorder: OutlineInputBorder(
                   //   borderRadius: BorderRadius.circular(6.0),
