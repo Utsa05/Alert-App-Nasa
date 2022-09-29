@@ -2,6 +2,9 @@ import 'package:alert_app/views/constants/asset.dart';
 import 'package:alert_app/views/constants/color.dart';
 import 'package:flutter/material.dart';
 
+
+import 'logo_widget.dart';
+
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
 
@@ -15,7 +18,7 @@ class _SplashPageState extends State<SplashPage> {
     //set backgroud image
     const boxDecoration = BoxDecoration(
         image: DecorationImage(
-            image: AssetImage(AppAsset.bgImage), fit: BoxFit.cover));
+            image: AssetImage(AppAsset.bgImages), fit: BoxFit.cover));
     return const Scaffold(
       body: SplashBody(boxDecoration: boxDecoration),
     );
@@ -40,25 +43,27 @@ class SplashBody extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: const [
+        children:  const [
+
+          SizedBox(
+            height: 15.0,
+          ),
+          LogoWidget(),
+          SizedBox(
+            height: 15.0,
+          ),
           Text(
-            "WELCOME\nTO\nALERT!",
+            "ALERT!",
             textAlign: TextAlign.center,
             style: TextStyle(color: AppColor.whiteColor, fontSize: 30.0),
           ),
           SizedBox(
-            height: 15.0,
-          ),
-          FlutterLogo(
-            size: 140,
-          ),
-          SizedBox(
-            height: 15.0,
+            height: 18.0,
           ),
           Text(
             "Never Miss Anything",
             textAlign: TextAlign.center,
-            style: TextStyle(color: AppColor.whiteColor, fontSize: 30.0),
+            style: TextStyle(color: AppColor.whiteColor, fontSize: 22.0),
           ),
         ],
       ),

@@ -1,4 +1,6 @@
 import 'package:alert_app/views/constants/string.dart';
+import 'package:alert_app/views/pages/home/home_page.dart';
+import 'package:alert_app/views/pages/splash/splash_page.dart';
 
 import 'package:flutter/material.dart';
 
@@ -12,6 +14,6 @@ class AlertApp extends StatelessWidget {
     return const MaterialApp(
         debugShowCheckedModeBanner: false,
         title: AppString.appName,
-        home: MapPageCheck());
+        home: HomePage());
   }
 }
