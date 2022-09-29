@@ -91,7 +91,7 @@ class _DailyDisaserBodyState extends State<DailyDisaserBody> {
 
           //safe
           Visibility(
-            visible: false,
+            visible: true,
               child:Stack(
                 children: [
                   Lottie.asset(AppAsset.area,height: 300),
@@ -104,7 +104,7 @@ class _DailyDisaserBodyState extends State<DailyDisaserBody> {
               )
           ),
            Visibility(
-            visible: false,
+            visible: true,
               child: Card(
                 color: Colors.yellow,
                 margin: EdgeInsets.all(10),
@@ -121,7 +121,7 @@ class _DailyDisaserBodyState extends State<DailyDisaserBody> {
 
              //danger
           Visibility(
-              visible: true,
+              visible: false,
               child:Stack(
                 children: [
                   Lottie.asset(AppAsset.area,height: 300),
@@ -134,7 +134,7 @@ class _DailyDisaserBodyState extends State<DailyDisaserBody> {
               )
           ),
           Visibility(
-              visible: true,
+              visible: false,
               child: Card(
                 color: Colors.white,
                 margin: EdgeInsets.all(10),
@@ -164,17 +164,20 @@ class _DailyDisaserBodyState extends State<DailyDisaserBody> {
               ),
           ),
           SizedBox(height: 10,),
-          Card(
-            color: Colors.red,
-            margin: EdgeInsets.all(10.0),
-            child: Padding(
-              padding: const EdgeInsets.all(3.0),
-              child: Row(
-                children:  [
-                  SizedBox(width: 10,),
-                  Image.asset("assets/images/e_call.png",height:80,),
-                  TextWidget(title: "Emergency Call",size: 32,)
-                ],
+          Visibility(
+            visible: false,
+            child: Card(
+              color: Colors.red,
+              margin: EdgeInsets.all(10.0),
+              child: Padding(
+                padding: const EdgeInsets.all(3.0),
+                child: Row(
+                  children:  [
+                    SizedBox(width: 10,),
+                    Image.asset("assets/images/e_call.png",height:80,),
+                    TextWidget(title: "Emergency Call",size: 32,)
+                  ],
+                ),
               ),
             ),
           )
