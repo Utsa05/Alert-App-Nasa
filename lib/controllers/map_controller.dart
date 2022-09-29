@@ -64,36 +64,38 @@ class MapController extends GetxController {
                   wildFireList[i].geometries![0].coordinates![0]),
             );
             markerList.add(markar);
-          } else {
-            // print(wildFireList[i].link);
-            // print(wildFireList[i].geometries![0].coordinates![0]);
-            // print(wildFireList[i].geometries![0].coordinates![1]);
-            defLan.value = wildFireList[i].geometries![0].coordinates![1];
-            defLati.value = wildFireList[i].geometries![0].coordinates![0];
-
-            kGooglePlex = CameraPosition(
-              target: LatLng(defLan.value, defLati.value),
-              zoom: 14.4746,
-            );
-
-            final Uint8List markerIcon =
-                await getBytesFromAsset('assets/icons/shield.png', 100);
-            var markar = Marker(
-              icon: BitmapDescriptor.fromBytes(markerIcon),
-              markerId: MarkerId(wildFireList[i].id.toString()),
-              position: LatLng(wildFireList[i].geometries![0].coordinates![1],
-                  wildFireList[i].geometries![0].coordinates![0]),
-              infoWindow: InfoWindow(
-                  title: wildFireList[i].title,
-                  snippet: wildFireList[i].categories![0].title.toString()),
-            );
-
-            latilongPoit.add(
-              LatLng(wildFireList[i].geometries![0].coordinates![1],
-                  wildFireList[i].geometries![0].coordinates![0]),
-            );
-            markerList.add(markar);
           }
+
+          //    else {
+          //     // print(wildFireList[i].link);
+          //     // print(wildFireList[i].geometries![0].coordinates![0]);
+          //     // print(wildFireList[i].geometries![0].coordinates![1]);
+          //     // defLan.value = wildFireList[i].geometries![0].coordinates![1];
+          //     // defLati.value = wildFireList[i].geometries![0].coordinates![0];
+
+          //     kGooglePlex = CameraPosition(
+          //       target: LatLng(defLan.value, defLati.value),
+          //       zoom: 14.4746,
+          //     );
+
+          //     final Uint8List markerIcon =
+          //         await getBytesFromAsset('assets/icons/shield.png', 100);
+          //     var markar = Marker(
+          //       icon: BitmapDescriptor.fromBytes(markerIcon),
+          //       markerId: MarkerId(wildFireList[i].id.toString()),
+          //       position: LatLng(wildFireList[i].geometries![0].coordinates![1],
+          //           wildFireList[i].geometries![0].coordinates![0]),
+          //       infoWindow: InfoWindow(
+          //           title: wildFireList[i].title,
+          //           snippet: wildFireList[i].categories![0].title.toString()),
+          //     );
+
+          //     latilongPoit.add(
+          //       LatLng(wildFireList[i].geometries![0].coordinates![1],
+          //           wildFireList[i].geometries![0].coordinates![0]),
+          //     );
+          //     markerList.add(markar);
+          //   }
         }
 
         wildFireLoading(false);
