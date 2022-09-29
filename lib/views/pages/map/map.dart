@@ -1,8 +1,11 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'dart:async';
+import 'package:alert_app/controllers/map_controller.dart';
+import 'package:alert_app/views/constants/color.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:get/get.dart';
 
 class MapPageCheck extends StatefulWidget {
   const MapPageCheck({super.key});
@@ -13,51 +16,61 @@ class MapPageCheck extends StatefulWidget {
 
 class _MapPageCheckState extends State<MapPageCheck> {
   final Completer<GoogleMapController> _controller = Completer();
-
-  static const CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
-    zoom: 14.4746,
-  );
+  final MapController mapController = Get.put(MapController());
 
   static const CameraPosition _kLake = CameraPosition(
       bearing: 192.8334901395799,
-      target: LatLng(37.43296265331129, -122.08832357078792),
+      target: LatLng(39.70995, -108.83211),
       tilt: 59.440717697143555,
       zoom: 19.151926040649414);
-
-  final List<Marker> _marker = [];
-  final List<Marker> _list = const [
-    Marker(
-        markerId: MarkerId('1'),
-        position: LatLng(37.43296265331129, -122.08832357078792),
-        infoWindow: InfoWindow(title: "Dhaka")),
-    Marker(
-        markerId: MarkerId('2'),
-        infoWindow: InfoWindow(title: "Asuliy"),
-        position: LatLng(37.42796133580664, -122.085749655962)),
-  ];
-
-  @override
-  void initState() {
-    _marker.addAll(_list);
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GoogleMap(
-        mapType: MapType.satellite,
-        initialCameraPosition: _kGooglePlex,
-        markers: Set<Marker>.of(_marker),
-        onMapCreated: (GoogleMapController controller) {
-          _controller.complete(controller);
-        },
-      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      body: Obx(() => mapController.wildFireLoading.value == false
+          ? Stack(
+              children: [
+                GoogleMap(
+                  //  polygons: mapController.polygone.value,
+                  //polylines: mapController.polyline,
+                  //mapType: MapType.satellite,
+                  initialCameraPosition: mapController.kGooglePlex,
+                  markers: Set<Marker>.of(mapController.markerList),
+                  onMapCreated: (GoogleMapController controller) {
+                    _controller.complete(controller);
+                  },
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 50.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.8,
+                        height: 46.0,
+                        decoration: BoxDecoration(
+                            color: AppColor.primaryColor.withOpacity(0.4),
+                            borderRadius: BorderRadius.circular(40.0)),
+                        alignment: Alignment.center,
+                        child: const Text(
+                          "WildFire Zone",
+                          style: TextStyle(
+                              color: AppColor.whiteColor, fontSize: 20.0),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            )
+          : const Center(
+              child: CircularProgressIndicator(),
+            )),
       floatingActionButton: FloatingActionButton.extended(
+        backgroundColor: AppColor.primaryColor.withOpacity(0.7),
         onPressed: _goToTheLake,
-        label: const Text(''),
-        icon: const Icon(Icons.directions_boat),
+        label: const Icon(Icons.location_on_sharp),
       ),
     );
   }
