@@ -1,9 +1,6 @@
 import 'package:alert_app/views/constants/asset.dart';
-import 'package:alert_app/views/constants/color.dart';
 import 'package:flutter/material.dart';
-
-
-import 'logo_widget.dart';
+import 'package:lottie/lottie.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -20,14 +17,14 @@ class _SplashPageState extends State<SplashPage> {
         image: DecorationImage(
             image: AssetImage(AppAsset.bgImages), fit: BoxFit.cover));
     return const Scaffold(
-      body: SplashBody(boxDecoration: boxDecoration),
+      body: Splashbody(boxDecoration: boxDecoration),
     );
   }
 }
 
 //splash body
-class SplashBody extends StatelessWidget {
-  const SplashBody({
+class Splashbody extends StatefulWidget {
+  const Splashbody({
     Key? key,
     required this.boxDecoration,
   }) : super(key: key);
@@ -35,36 +32,23 @@ class SplashBody extends StatelessWidget {
   final BoxDecoration boxDecoration;
 
   @override
+  State<Splashbody> createState() => _SplashbodyState();
+}
+
+class _SplashbodyState extends State<Splashbody> {
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       height: double.infinity,
       width: MediaQuery.of(context).size.height,
-      decoration: boxDecoration,
+      decoration: widget.boxDecoration,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children:  const [
-
-          SizedBox(
-            height: 15.0,
-          ),
-          LogoWidget(),
-          SizedBox(
-            height: 15.0,
-          ),
-          Text(
-            "ALERT!",
-            textAlign: TextAlign.center,
-            style: TextStyle(color: AppColor.whiteColor, fontSize: 30.0),
-          ),
-          SizedBox(
-            height: 18.0,
-          ),
-          Text(
-            "Never Miss Anything",
-            textAlign: TextAlign.center,
-            style: TextStyle(color: AppColor.whiteColor, fontSize: 22.0),
-          ),
+        children:    [
+          const SizedBox(height: 35,),
+          Lottie.asset(AppAsset.area),
         ],
       ),
     );

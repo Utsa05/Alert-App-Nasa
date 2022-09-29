@@ -11,7 +11,7 @@ class Item extends StatelessWidget {
     return Container(
       alignment: Alignment.center,
       padding: const EdgeInsets.all(5.0),
-      margin: const EdgeInsets.only(left: 16,right: 16,top: 12,bottom: 12),
+      margin: const EdgeInsets.only(left: 16,right: 16,top: 10,bottom: 10),
       height: heigth ?? 125,
       width: width ?? 147,
       decoration: BoxDecoration(

@@ -51,7 +51,7 @@ class HomeBody extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children:   [
-              const SizedBox(height: 40,),
+              const SizedBox(height: 35,),
               Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
@@ -82,27 +82,36 @@ class HomeBody extends StatelessWidget {
 
 
 
-              MyLocation(),
+              const MyLocation(),
               const SizedBox(height: 25,),
-              Container(
+              Container(  
                 alignment: Alignment.center,
                   margin: const EdgeInsets.only(left: 20,right: 20),
-                  height: 140,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.white,width: 1.5),
-                    borderRadius: BorderRadius.circular(8.0),
-                  )
+                  height: 130,
+                child: Stack(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(8.0),
+                      child: Image.asset(AppAsset.turbine,fit: BoxFit.fitHeight,),
+                    ),
+                    const Positioned(
+                        left: 80,top: 5,
+                        child: TextWidget(title: "Actual Wind Speed\n       3 Km/h",weight: FontWeight.w500,color: Colors.white,))
+                  ],
+                ),
               ),
+
+
               const SizedBox(height: 22,),
+              Item(title:"Daily Disaster",path:AppAsset.disaster,width: 320,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Item(title:"Assist Me",path:AppAsset.assist_me,),
-
                   Item(title:"Echo Meter",path:AppAsset.echo_meter,),
               ],),
-              SizedBox(height: 3,),
+              const SizedBox(height: 3,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.max,
@@ -110,10 +119,8 @@ class HomeBody extends StatelessWidget {
                   Item(title:"Self Escape",path:AppAsset.self_escape,),
                   Item(title:"Health Care",path:AppAsset.health_focus,),
                 ],),
-
-              Expanded(child: Container(
-
-              ))
+              
+              Expanded(child: SizedBox(height: 10,))
 
                ],
           ),

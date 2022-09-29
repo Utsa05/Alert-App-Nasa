@@ -67,9 +67,14 @@ class _MyLocationState extends State<MyLocation> {
     return  Container(
       margin: const EdgeInsets.only(left: 16,top: 10),
       child: Row(children:  [
-        const Icon(Icons.location_on_sharp,color:Colors.white,),
+        const Icon(Icons.location_on_sharp,color:Colors.white,size: 28,),
         const SizedBox(width: 5,),
-        Expanded(child: TextWidget(title:"${Address}",color: Colors.white,))
+        SizedBox(
+            width: 300,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 0),
+              child: TextLtdWidget(title:"${Address}",color: Colors.white,line: 2,),
+            ))
       ],),
     );
   }
